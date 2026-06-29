@@ -24,6 +24,7 @@ import urllib.request
 import urllib.parse
 import mimetypes
 import time
+import sys
 
 from django.conf import settings
 
@@ -35,9 +36,10 @@ _supabase_client = None         # Supabase Python client
 _firebase_mode = "local"        # "admin" | "rest" | "local"
 _project_id = getattr(settings, "FIREBASE_PROJECT_ID", "")
 _api_key = getattr(settings, "FIREBASE_API_KEY", "")
+_is_testing = "test" in sys.argv
 
 # ─── Mode 1: Admin SDK initialisation ────────────────────────────────────────
-if _project_id and getattr(settings, "FIREBASE_CLIENT_EMAIL", "") and getattr(settings, "FIREBASE_PRIVATE_KEY", ""):
+if not _is_testing and _project_id and getattr(settings, "FIREBASE_CLIENT_EMAIL", "") and getattr(settings, "FIREBASE_PRIVATE_KEY", ""):
     try:
         import firebase_admin
         from firebase_admin import credentials, firestore
@@ -60,7 +62,7 @@ if _project_id and getattr(settings, "FIREBASE_CLIENT_EMAIL", "") and getattr(se
         logger.error("Firebase Admin SDK initialisation failed: %s. Trying REST mode...", exc)
 
 # ─── Mode 2: REST API fallback (project ID + API key only) ───────────────────
-if _firebase_mode == "local" and _project_id and _api_key:
+if not _is_testing and _firebase_mode == "local" and _project_id and _api_key:
     _firebase_mode = "rest"
     logger.info(
         "[INFO] Firebase REST API mode active (Mode 2 - project: %s). "
@@ -70,13 +72,12 @@ if _firebase_mode == "local" and _project_id and _api_key:
 
 if _firebase_mode == "local":
     logger.warning(
-        "[WARN] No Firebase credentials found. All data uses local SQLite. "
-        "Add FIREBASE_PROJECT_ID (+ FIREBASE_PRIVATE_KEY / FIREBASE_API_KEY) to .env to enable Firebase."
+        "[WARN] No Firebase credentials found or test mode active. All data uses local SQLite."
     )
 
 # ─── Startup data probe ───────────────────────────────────────────────────────
 _firestore_has_data = False
-if _firebase_mode in ("admin", "rest"):
+if not _is_testing and _firebase_mode in ("admin", "rest"):
     try:
         import urllib.request as _urllib_req
         import json as _json
@@ -115,9 +116,10 @@ if _firebase_mode in ("admin", "rest"):
 _supabase_url = getattr(settings, "SUPABASE_URL", "") or os.getenv("SUPABASE_URL", "")
 _supabase_key = getattr(settings, "SUPABASE_KEY", "") or os.getenv("SUPABASE_KEY", "")
 
-if not _supabase_url or not _supabase_key:
+if _is_testing or not _supabase_url or not _supabase_key:
     _supabase_client = None
-    logger.error("[ERROR] Supabase credentials missing: SUPABASE_URL and SUPABASE_KEY must be populated in .env. Initialization stopped.")
+    if not _is_testing:
+        logger.error("[ERROR] Supabase credentials missing: SUPABASE_URL and SUPABASE_KEY must be populated in .env. Initialization stopped.")
 else:
     try:
         from supabase import create_client
