@@ -116,10 +116,17 @@ if not _is_testing and _firebase_mode in ("admin", "rest"):
 _supabase_url = getattr(settings, "SUPABASE_URL", "") or os.getenv("SUPABASE_URL", "")
 _supabase_key = getattr(settings, "SUPABASE_KEY", "") or os.getenv("SUPABASE_KEY", "")
 
-if _is_testing or not _supabase_url or not _supabase_key:
+# Treat placeholder values as missing (e.g. YOUR_SUPABASE_SERVICE_ROLE_KEY)
+_supabase_key_valid = bool(_supabase_key) and "YOUR_" not in _supabase_key and "REPLACE_WITH" not in _supabase_key
+_supabase_url_valid = bool(_supabase_url) and "YOUR_" not in _supabase_url
+
+if _is_testing or not _supabase_url_valid or not _supabase_key_valid:
     _supabase_client = None
     if not _is_testing:
-        logger.error("[ERROR] Supabase credentials missing: SUPABASE_URL and SUPABASE_KEY must be populated in .env. Initialization stopped.")
+        if not _supabase_key_valid:
+            logger.warning("[WARN] Supabase credentials missing or placeholder: SUPABASE_KEY must be a real service_role JWT in .env. Media uploads disabled.")
+        else:
+            logger.error("[ERROR] Supabase credentials missing: SUPABASE_URL and SUPABASE_KEY must be populated in .env. Initialization stopped.")
 else:
     try:
         from supabase import create_client
@@ -128,6 +135,7 @@ else:
     except Exception as exc:
         _supabase_client = None
         logger.error(f"[ERROR] Supabase client creation failed: {exc}. Initialization stopped.")
+
 
 # ─── REST API helpers ─────────────────────────────────────────────────────────
 
