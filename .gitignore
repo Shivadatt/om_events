@@ -3,7 +3,13 @@ __pycache__/
 *.pyc
 .env
 db.sqlite3
+# Django MEDIA_ROOT (user uploads) - keep excluded
 media/
+# Large video files - too big for git, serve from local only
+app/static/media/videos/
+# Static photos are committed so Vercel can serve them
+# app/static/media/photos/ ← intentionally tracked
+
 staticfiles/
 logs/
 .vscode/
