@@ -25,6 +25,29 @@ SQL_SERVER_CONN_STR = (
 class Command(BaseCommand):
     help = "E2E Database Reconciliation & Auto-Fix script (SQL Server -> SQLite -> Supabase -> Firestore)"
 
+    # Build case-correction map once: lowercase filename -> actual filename on disk
+    _photos_dir = None
+    _actual_files_map = {}
+
+    def _correct_image_url(self, raw_url):
+        """Strip trailing spaces and correct filename case to match real file on disk."""
+        if not raw_url or not isinstance(raw_url, str):
+            return raw_url or ""
+        url = raw_url.strip()
+        if url.startswith("http://") or url.startswith("https://"):
+            return url  # External URLs are kept as-is
+        # Build the case map lazily
+        if not self._photos_dir:
+            self._photos_dir = os.path.join(settings.BASE_DIR, "app", "static", "media", "photos")
+            if os.path.isdir(self._photos_dir):
+                self._actual_files_map = {f.lower(): f for f in os.listdir(self._photos_dir)}
+        filename = os.path.basename(url)
+        correct_name = self._actual_files_map.get(filename.lower())
+        if correct_name:
+            return f"/static/media/photos/{correct_name}"
+        return url
+
+
     def handle(self, *args, **options):
         self.stdout.write(self.style.MIGRATE_HEADING("=== PHASE 1: SQL SERVER AUDIT ==="))
         try:
@@ -317,8 +340,8 @@ class Command(BaseCommand):
                 "slug": item_slug,
                 "name": item["name"],
                 "description": item["description"],
-                "image_url": media_urls["image_url"] or item["image_url"],
-                "video_url": media_urls["video_url"] or item["video_url"],
+                "image_url": media_urls["image_url"] or self._correct_image_url(item["image_url"]),
+                "video_url": media_urls["video_url"] or (item["video_url"] or "").strip(),
                 "gallery_urls": media_urls["gallery_urls"] or [],
                 "price": float(item["price"]),
                 "discount_price": float(item["offer_price"]) if item["offer_price"] is not None else None,

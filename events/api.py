@@ -73,10 +73,15 @@ def categories(request):
             docs = db.collection("categories").where("is_active", "==", True).stream()
             data = []
             for doc in docs:
-                d = doc.to_dict()
-                d["id"] = doc.id
+                # Handle both Admin SDK DocumentSnapshot and REST plain dicts
+                if isinstance(doc, dict):
+                    d = doc
+                    d["id"] = doc.get("id") or doc.get("slug", "")
+                else:
+                    d = doc.to_dict()
+                    d["id"] = doc.id
                 # Count items belonging to this category
-                items_docs = db.collection("items").where("category_id", "==", doc.id).where("is_active", "==", True).stream()
+                items_docs = db.collection("items").where("category_id", "==", d["id"]).where("is_active", "==", True).stream()
                 d["item_count"] = len(list(items_docs))
                 data.append(d)
             if data:  # Only use Firestore result if it has data; otherwise fall through to SQLite
@@ -114,16 +119,29 @@ def items(request):
                 ref = ref.where("is_featured", "==", True)
             
             cats_stream = db.collection("categories").stream()
-            cat_names = {c.id: c.to_dict().get("name", "") for c in cats_stream}
+            cat_names = {}
+            for c in cats_stream:
+                if isinstance(c, dict):
+                    cat_names[c.get("id") or c.get("slug", "")] = c.get("name", "")
+                else:
+                    cat_names[c.id] = c.to_dict().get("name", "")
 
             docs = ref.stream()
             data = []
             for doc in docs:
-                d = doc.to_dict()
-                d["id"] = doc.id
+                # Handle both Admin SDK DocumentSnapshot and REST plain dicts
+                if isinstance(doc, dict):
+                    d = doc
+                    d["id"] = doc.get("id") or doc.get("slug", "")
+                else:
+                    d = doc.to_dict()
+                    d["id"] = doc.id
                 d["category_slug"] = d.get("category_id")
                 d["category"] = cat_names.get(d.get("category_id"), "")
                 d["effective_price"] = d.get("offer_price") if d.get("offer_price") is not None else d.get("price", 0)
+                # Strip trailing whitespace from image_url
+                if d.get("image_url"):
+                    d["image_url"] = d["image_url"].strip()
 
                 if search:
                     search_lower = search.lower()
@@ -192,17 +210,28 @@ def item_detail(request, slug):
         try:
             doc_ref = db.collection("items").document(slug)
             doc = doc_ref.get()
-            if doc.exists:
-                d = doc.to_dict()
-                d["id"] = doc.id
-                
+            if isinstance(doc, dict):
+                # REST mode returns a dict directly from get()
+                d = doc
+                doc_exists = d is not None
+            else:
+                doc_exists = doc.exists
+                d = doc.to_dict() if doc_exists else None
+
+            if doc_exists and d:
+                d["id"] = d.get("id") or slug
                 # Fetch category name
-                cat_doc = db.collection("categories").document(d.get("category_id")).get()
-                cat_name = cat_doc.to_dict().get("name", "") if cat_doc.exists else ""
-                
+                cat_doc = db.collection("categories").document(d.get("category_id", "")).get()
+                if isinstance(cat_doc, dict):
+                    cat_name = (cat_doc or {}).get("name", "")
+                else:
+                    cat_name = cat_doc.to_dict().get("name", "") if cat_doc.exists else ""
+
                 d["category_slug"] = d.get("category_id")
                 d["category"] = cat_name
                 d["effective_price"] = d.get("offer_price") if d.get("offer_price") is not None else d.get("price", 0)
+                if d.get("image_url"):
+                    d["image_url"] = d["image_url"].strip()
 
                 # Increment popularity
                 doc_ref.update({"popularity": d.get("popularity", 0) + 1})
