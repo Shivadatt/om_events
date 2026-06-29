@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Studio — Om Events</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/admin.css?v=20260628-4"><link rel="stylesheet" href="/static/css/admin-enhancements.css?v=20260628-4"><script src="/static/js/admin.js?v=20260628-4" defer></script>
+</head>
+<body>
+  <section class="login-view" id="loginView">
+    <div class="login-art"><a href="/" class="admin-brand"><span>OE</span> OM EVENTS</a><div><p>STUDIO / 2026</p><h1>Beautiful work<br>begins with<br>a <em>clear view.</em></h1></div><small>Celebration operations, without the spreadsheet maze.</small></div>
+    <form class="login-card" id="loginForm"><p>TEAM ACCESS</p><h2>Welcome back.</h2><label>Email<input type="email" name="email" value="admin@omevents.in" required></label><label>Password<input type="password" name="password" required></label><button type="submit">Enter the studio <span>↗</span></button><div class="login-error" id="loginError"></div><small>Seed password: ChangeMe123! — change before deployment.</small></form>
+  </section>
+  <section class="dashboard hidden" id="dashboard">
+    <aside><a class="admin-brand" href="/"><span>OE</span> OM EVENTS</a><nav><a class="active" href="/admin">⌂ Overview</a><a href="/admin/events/lead/">♡ Manage leads</a><a href="/admin/events/quotation/">□ Quotations</a><a href="/admin/events/category/">◇ Collections</a><a href="/admin/events/decorationitem/">✦ Experiences</a></nav><div class="side-bottom"><a href="/">← View website</a><button id="logoutButton">Sign out</button></div></aside>
+    <main>
+      <header><div><p>STUDIO OVERVIEW</p><h1>Good <span id="dayTime">morning</span>, <em>team.</em></h1></div><button class="avatar">OE</button></header>
+      <section class="stat-grid"><article><span>NEW LEADS</span><strong id="leadCount">—</strong><small>People waiting to hear from you</small></article><article><span>QUOTATIONS</span><strong id="quoteCount">—</strong><small>Saved customer proposals</small></article><article class="revenue"><span>QUOTED VALUE</span><strong id="revenueCount">—</strong><small>Current pipeline value</small></article><article><span>COLLECTIONS</span><strong id="categoryCount">—</strong><small>Active event categories</small></article></section>
+      <section class="dashboard-grid"><article class="panel"><div class="panel-head"><div><p>LATEST INQUIRIES</p><h2>Fresh conversations</h2></div><span class="live">● LIVE</span></div><div class="table-wrap"><table><thead><tr><th>Customer</th><th>Request</th><th>Event</th><th>Status</th></tr></thead><tbody id="leadsTable"></tbody></table></div></article>
+      <article class="panel quote-panel"><div class="panel-head"><div><p>RECENT QUOTES</p><h2>Proposal pipeline</h2></div></div><div id="quotesList"></div></article></section>
+    </main>
+  </section>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "info": {
+    "name": "Om Events API",
+    "_postman_id": "a71f7ed9-1f6b-4f88-9ca4-omevents",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [{"key": "baseUrl", "value": "http://127.0.0.1:5000"}, {"key": "token", "value": ""}],
+  "item": [
+    {"name": "Health", "request": {"method": "GET", "url": "{{baseUrl}}/api/health"}},
+    {"name": "Categories", "request": {"method": "GET", "url": "{{baseUrl}}/api/categories"}},
+    {"name": "Search experiences", "request": {"method": "GET", "url": "{{baseUrl}}/api/items?q=royal&sort=popular"}},
+    {"name": "Create lead", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\"name\":\"Aarav Shah\",\"phone\":\"9876543210\",\"request_type\":\"callback\",\"requirements\":\"Wedding stage consultation\"}"}, "url": "{{baseUrl}}/api/leads"}},
+    {"name": "Create quotation", "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\"name\":\"Kavya Patel\",\"phone\":\"9876543210\",\"event_date\":\"2026-12-20\",\"event_time\":\"18:30\",\"location\":\"Ahmedabad\",\"items\":[{\"id\":1,\"quantity\":1,\"color\":\"Pastel\",\"theme\":\"Minimal\"}]}"}, "url": "{{baseUrl}}/api/quotes"}},
+    {"name": "Admin login", "event": [{"listen": "test", "script": {"exec": ["pm.collectionVariables.set('token', pm.response.json().access_token);"]}}], "request": {"method": "POST", "header": [{"key": "Content-Type", "value": "application/json"}], "body": {"mode": "raw", "raw": "{\"email\":\"admin@omevents.in\",\"password\":\"ChangeMe123!\"}"}, "url": "{{baseUrl}}/api/auth/login"}},
+    {"name": "Admin dashboard", "request": {"method": "GET", "header": [{"key": "Authorization", "value": "Bearer {{token}}"}], "url": "{{baseUrl}}/api/admin/stats"}}
+  ]
+}

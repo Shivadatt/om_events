@@ -1,0 +1,6 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>API — Om Events</title><link rel="stylesheet" href="/static/css/app.css?v=20260628-4"></head>
+<body class="docs-page"><main><a href="/">← Back to website</a><p class="eyebrow">Developer reference</p><h1>Om Events REST API</h1><p>JSON endpoints are same-origin, rate-limited, and return conventional HTTP status codes. Admin endpoints require <code>Authorization: Bearer &lt;token&gt;</code>.</p>
+<section><h2>Public catalog</h2><code>GET /api/categories</code><code>GET /api/items?q=&category=&sort=&page=</code><code>GET /api/items/{slug}</code><code>GET /api/reviews</code></section>
+<section><h2>Customer actions</h2><code>POST /api/leads</code><code>POST /api/quotes</code><code>GET /api/quotes/{public_id}/pdf</code></section>
+<section><h2>Administration</h2><code>POST /api/auth/login</code><code>GET /api/auth/me</code><code>GET /api/admin/stats</code></section>
+<p>See <code>postman/Om-Events.postman_collection.json</code> for request bodies and examples.</p></main></body></html>

@@ -1,0 +1,14 @@
+Django==5.2.15
+mssql-django==1.7.3
+PyJWT==2.13.0
+pyodbc==5.2.0
+Pillow==11.2.1
+reportlab==4.4.1
+python-dotenv==1.1.0
+whitenoise==6.9.0
+waitress==3.0.2
+gunicorn==23.0.0
+pytest==8.4.1
+firebase-admin==6.5.0
+supabase==2.31.0
+websockets==15.0.1

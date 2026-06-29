@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Bespoke event styling and transparent instant quotations for weddings, birthdays, proposals, baby celebrations and corporate events.">
+  <meta name="theme-color" content="#15211e">
+  <title>Om Events — Celebrations, thoughtfully composed.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/app.css?v=20260628-4">
+  <link rel="stylesheet" href="/static/css/enhancements.css?v=20260628-4">
+  <script src="/static/js/app.js?v=20260628-4" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="announcement">Now accepting celebrations for July–December 2026 <span>•</span> Gujarat & beyond</div>
+  <header class="site-header" id="header">
+    <a class="brand" href="#top" aria-label="Om Events home">
+      <span class="brand-mark">OE</span>
+      <span><b>OM EVENTS</b><small>MAKE IT MEMORABLE</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="#collections">Collections</a><a href="#experiences">Experiences</a><a href="#stories">Stories</a><a href="#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode"><span>☾</span></button>
+      <button class="cart-button" id="cartOpen" aria-label="Open selection">
+        Selection <span id="cartCount">0</span>
+      </button>
+      <button class="menu-button" id="menuButton" aria-label="Open menu">Menu</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-orb orb-one"></div><div class="hero-orb orb-two"></div>
+      <div class="hero-content reveal">
+        <p class="eyebrow">Bespoke event design • Ahmedabad</p>
+        <h1>Celebrations,<br><em>thoughtfully</em> composed.</h1>
+        <p class="hero-copy">From the first sketch to the final flower, create an experience that feels unmistakably yours—with transparent prices from the start.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#experiences">Design your event <span>↗</span></a>
+          <button class="btn ghost" data-open-lead>Plan with an expert</button>
+        </div>
+        <div class="hero-trust"><span>4.9 ★ Google rating</span><span>650+ celebrations</span><span>8 years of wonder</span></div>
+      </div>
+      <div class="hero-stage reveal delay">
+        <div class="stage-arch arch-one"></div><div class="stage-arch arch-two"></div>
+        <div class="stage-copy"><span>FEATURED STORY</span><strong>Ivory Vow</strong><small>Ahmedabad · 2026</small></div>
+        <div class="float-card"><span>Handcrafted</span><b>Every detail, yours.</b></div>
+      </div>
+      <div class="scroll-cue">SCROLL TO EXPLORE <i></i></div>
+    </section>
+
+    <section class="marquee" aria-label="Services">
+      <div>WEDDINGS <i>✦</i> BIRTHDAYS <i>✦</i> BABY SHOWERS <i>✦</i> PROPOSALS <i>✦</i> BRAND LAUNCHES <i>✦</i> GRAND ENTRIES <i>✦</i></div>
+    </section>
+
+    <section class="benefits section" aria-labelledby="benefits-title">
+      <div class="benefits-heading reveal">
+        <p class="eyebrow">Why celebrate with us</p>
+        <h2 id="benefits-title">Everything your event needs.<br><em>One thoughtful team.</em></h2>
+        <p>Less chasing vendors. More time being present.</p>
+      </div>
+      <div class="benefit-grid">
+        <article class="benefit-card reveal"><span>◇</span><h3>Personal design</h3><p>A concept shaped around your story, venue and budget—not a fixed package.</p></article>
+        <article class="benefit-card reveal"><span>₹</span><h3>Clear live pricing</h3><p>Build your selection and see every charge before you send an enquiry.</p></article>
+        <article class="benefit-card reveal"><span>⌁</span><h3>One accountable team</h3><p>Design, production, installation and teardown stay under one roof.</p></article>
+        <article class="benefit-card reveal"><span>✓</span><h3>Venue-ready planning</h3><p>Timelines, access, power and installation details checked well in advance.</p></article>
+        <article class="benefit-card reveal"><span>✦</span><h3>Premium execution</h3><p>Purposeful materials, careful finishing and a crew that respects the space.</p></article>
+        <article class="benefit-card reveal"><span>◌</span><h3>Calm on event day</h3><p>A dedicated coordinator keeps the moving parts invisible to you.</p></article>
+      </div>
+    </section>
+
+    <section class="section collections" id="collections">
+      <div class="section-heading reveal">
+        <div><p class="eyebrow">Begin with a feeling</p><h2>What are we<br><em>celebrating?</em></h2></div>
+        <p>Choose a chapter and make it personal. Every collection is a starting point, never a fixed package.</p>
+      </div>
+      <div class="category-grid" id="categoryGrid" aria-live="polite">
+        <div class="skeleton category-skeleton"></div><div class="skeleton category-skeleton"></div><div class="skeleton category-skeleton"></div>
+      </div>
+    </section>
+
+    <section class="section experience-section" id="experiences">
+      <div class="section-heading reveal">
+        <div><p class="eyebrow">Curated experiences</p><h2>Designed to leave<br>a <em>beautiful echo.</em></h2></div>
+        <p>Explore signature concepts, see an honest starting price, then tune every color, material and detail.</p>
+      </div>
+      <div class="catalog-toolbar">
+        <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search a mood, theme or event…" autocomplete="off"></label>
+        <div class="filter-chips" id="filterChips"><button class="chip active" data-category="">All</button></div>
+        <select id="sortSelect" aria-label="Sort decorations">
+          <option value="popular">Most loved</option><option value="latest">Latest</option>
+          <option value="price_low">Price: low to high</option><option value="price_high">Price: high to low</option>
+        </select>
+      </div>
+      <div class="product-grid" id="productGrid" aria-live="polite">
+        <div class="skeleton product-skeleton"></div><div class="skeleton product-skeleton"></div><div class="skeleton product-skeleton"></div>
+      </div>
+      <p class="empty-state hidden" id="emptyState">No experiences match that search. Try a broader mood.</p>
+    </section>
+
+    <section class="video-story section" id="showcase">
+      <div class="video-copy reveal">
+        <p class="eyebrow">Celebrate in style</p>
+        <h2>A glimpse before<br>the <em>big day.</em></h2>
+        <p>From elegant balloon styling to personalized backdrops and thoughtful details, we create celebrations that feel joyful, memorable, and uniquely yours. Every setup is crafted to make your special day unforgettable.</p>
+        <div class="video-facts"><span><b>01</b> Theme & Planning</span><span><b>02</b> Production & styling</span><span><b>03</b> Celebrate & Capture Memories</span></div>
+        <a class="btn dark" href="#experiences">Build your celebration <span>↗</span></a>
+      </div>
+      <div class="video-frame reveal">
+        <video controls muted loop playsinline preload="metadata" poster="/static/media/photos/birthday.jpg">
+          <source src="/static/media/videos/Birthday.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+        <span class="video-label">SAMPLE EVENT FILM · HD</span>
+      </div>
+    </section>
+
+    <section class="video-story section" id="showcase">
+      <div class="video-copy reveal">
+        <p class="eyebrow">Experience the excitement</p>
+        <h2>Balloon Blast<br>the <em>perfect surprise.</em></h2>
+        <p>A single pop transforms the atmosphere into a shower of colors, confetti, and unforgettable smiles. Designed to create the perfect reveal for birthdays, proposals, anniversaries, baby showers, and every celebration worth remembering.</p>
+        <div class="video-facts"><span><b>01</b> Suspense & Countdown</span><span><b>02</b> Balloon Blast Moment</span><span><b>03</b> Cheers & Celebration</span></div>
+        <a class="btn dark" href="#experiences">Build your celebration <span>↗</span></a>
+      </div>
+      <div class="video-frame reveal">
+        <video controls muted loop playsinline preload="metadata" poster="/static/media/photos/baloonblast.jpg">
+          <source src="/static/media/videos/Balloonblast.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+        <span class="video-label">SAMPLE EVENT FILM · HD</span>
+      </div>
+    </section>
+
+    <section class="process section">
+      <div class="process-intro reveal">
+        <p class="eyebrow">Easy by design</p>
+        <h2>Your celebration,<br>without the <em>chaos.</em></h2>
+        <p>One thoughtful process, one accountable team, and a quotation that updates while you create.</p>
+        <button class="text-link" data-open-lead>Talk to a celebration planner <span>↗</span></button>
+      </div>
+      <ol class="process-list">
+        <li class="reveal"><span>01</span><div><h3>Choose your canvas</h3><p>Browse our event collections and add the ideas that feel like you.</p></div></li>
+        <li class="reveal"><span>02</span><div><h3>Make it personal</h3><p>Tune colors, themes and quantities. Leave us the oddly specific notes—we love those.</p></div></li>
+        <li class="reveal"><span>03</span><div><h3>Know your number</h3><p>See every charge clearly and download a polished, itemized quotation.</p></div></li>
+        <li class="reveal"><span>04</span><div><h3>We bring the wonder</h3><p>Our crew handles production, styling and teardown. You stay in the moment.</p></div></li>
+      </ol>
+    </section>
+
+    <section class="stats-band">
+      <div><strong data-count="650">0</strong><span>celebrations styled</span></div>
+      <div><strong data-count="38">0</strong><span>creative specialists</span></div>
+      <div><strong data-count="4.9">0</strong><span>average rating</span></div>
+      <div><strong data-count="12">0</strong><span>cities served</span></div>
+    </section>
+
+    <section class="section stories" id="stories">
+      <div class="section-heading reveal">
+        <div><p class="eyebrow">Kind words</p><h2>From people still<br><em>smiling about it.</em></h2></div>
+      </div>
+      <div class="reviews-grid" id="reviewsGrid"></div>
+    </section>
+
+    <section class="section faq-section">
+      <div><p class="eyebrow">A few good questions</p><h2>Before the<br><em>confetti flies.</em></h2></div>
+      <div class="faq-list">
+        <details><summary>How far in advance should I book?<span>+</span></summary><p>Four to eight weeks is ideal for custom work. For larger weddings, reserve your date three to six months ahead. Short notice? Ask us—we keep a little room for spontaneous magic.</p></details>
+        <details><summary>Can I change the colors and materials?<span>+</span></summary><p>Absolutely. Every concept can be adapted to your palette, venue and story. Use the builder to share your direction, then our designer will refine it with you.</p></details>
+        <details><summary>What does the starting price include?<span>+</span></summary><p>The product card price includes the listed styling, standard setup and teardown. Your live quotation separately shows GST, delivery and any travel charge.</p></details>
+        <details><summary>Do you visit the venue before the event?<span>+</span></summary><p>For complex installations and weddings, we schedule a site visit after the discovery call. It helps us verify dimensions, power access and load-in timing.</p></details>
+      </div>
+    </section>
+
+    <section class="contact-banner" id="contact">
+      <div><p class="eyebrow">Have something else in mind?</p><h2>Let’s make room<br>for the <em>unexpected.</em></h2></div>
+      <div><p>Tell us the dream, the venue, and the number you want to stay near. We’ll shape the rest together.</p><button class="btn light" data-open-lead>Start a conversation <span>↗</span></button></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-main">
+      <div class="footer-brand"><span class="brand-mark">OE</span><h3>OM EVENTS</h3><p>Moments pass.<br>Beautiful ones echo.</p></div>
+      <div><h4>Explore</h4><a href="#collections">Collections</a><a href="#experiences">Experiences</a><a href="#stories">Stories</a><a href="/docs">API docs</a></div>
+      <div><h4>Visit</h4><p>Branch - 1: Medha (kadi-kalyanpura road),<br> Branch -2: Thangadh(Surendranagar)<br>Gujarat India 382715</p><a href="tel:+{{ business_phone }}">+91 9512149944 <br> +91 9313513156</a><a href="mailto:omeventsanddecorators@gmail.com">omeventsanddecorators@gmail.com</a></div>
+      <div><h4>Follow the wonder</h4><a href="https://www.instagram.com/om_events_and_decorators/" rel="nofollow">Instagram -Kadi ↗</a>
+      <a href="https://www.instagram.com/om_events__decorators/" rel="nofollow">Instagram - Thangadh↗</a>
+        {% comment %} <a href="#" rel="nofollow">Facebook ↗</a><a href="#" rel="nofollow">Pinterest ↗</a></div> {% endcomment %}
+    </div>
+    <div class="footer-bottom"><span>© 2026 Om Events</span><span>Made with care in Gujarat</span><a href="/admin">Team studio</a></div>
+  </footer>
+
+  <a class="floating-whatsapp" id="whatsappFloat" href="https://wa.me/+919512149944?text=Hello%20Om%20Events%2C%20I%27d%20like%20to%20plan%20an%20event." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">◉<span>WhatsApp us</span></a>
+
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true" aria-label="Your selection">
+    <div class="drawer-head"><div><p class="eyebrow">Your event canvas</p><h2>Selection <span id="drawerCount">(0)</span></h2></div><button class="close-button" id="cartClose" aria-label="Close selection">×</button></div>
+    <div class="cart-empty" id="cartEmpty"><span>✦</span><h3>Your canvas is open.</h3><p>Add a few experiences and we’ll calculate everything as you go.</p><button class="btn dark" id="exploreButton">Explore experiences</button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-summary hidden" id="cartSummary">
+      <div><span>Subtotal</span><b id="subtotal">₹0</b></div>
+      <div class="discount-row"><span>Celebration discount</span><b id="discount">—</b></div>
+      <div><span>Delivery</span><b>₹500</b></div>
+      <div><span>GST (18%)</span><b id="gst">₹0</b></div>
+      <div><span>Extra Discount!!</span><b id="extraDiscount">₹0</b></div>  
+      <div class="grand-total"><span>Estimated total<small>Finalized in your quotation</small></span><b id="grandTotal">₹0</b></div>
+      <button class="btn primary full" id="quoteButton">Create my quotation <span>↗</span></button>
+    </div>
+  </aside>
+
+  <dialog class="modal" id="detailModal">
+    <button class="modal-close" data-close-modal aria-label="Close">×</button>
+    <div id="detailContent"></div>
+  </dialog>
+
+  <dialog class="modal form-modal" id="quoteModal">
+    <button class="modal-close" data-close-modal aria-label="Close">×</button>
+    <div class="modal-heading"><p class="eyebrow">Almost there</p><h2>Where should we<br>bring the <em>wonder?</em></h2><p>Your itemized quotation will be saved and ready to download instantly.</p></div>
+    <form id="quoteForm">
+      <div class="form-grid"><label>Full name<input name="name" required autocomplete="name" placeholder="Your name"></label><label>Phone<input name="phone" required inputmode="numeric" autocomplete="tel" placeholder="10-digit number"></label></div>
+      <div class="form-grid"><label>Event date<input name="event_date" type="date" required></label><label>Event time<input name="event_time" type="time" value="18:00"></label></div>
+      <label>Venue / location<input name="location" required placeholder="Venue name, area and city"></label>
+      <label>Anything we should know?<textarea name="notes" rows="3" placeholder="Access, timings, special instructions…"></textarea></label>
+      <button class="btn primary full" type="submit">Generate quotation <span>↗</span></button><p class="form-status" id="quoteStatus" role="status"></p>
+    </form>
+  </dialog>
+
+  <dialog class="modal form-modal compact-modal" id="leadModal">
+    <button class="modal-close" data-close-modal aria-label="Close">×</button>
+    <div class="modal-heading"><p class="eyebrow">Let’s talk</p><h2>Tell us a little<br>about the <em>occasion.</em></h2></div>
+    <form id="leadForm">
+      <div class="form-grid"><label>Your name<input name="name" required></label><label>Phone<input name="phone" required inputmode="numeric"></label></div>
+      <div class="form-grid"><label>Event date<input name="event_date" type="date"></label><label>Approx. budget<input name="budget" type="number" min="0" placeholder="₹"></label></div>
+      <label>What are you imagining?<textarea name="requirements" rows="4" placeholder="The event, the mood, the must-have details…"></textarea></label>
+      <input type="hidden" name="request_type" value="callback">
+      <button class="btn primary full" type="submit">Request a callback <span>↗</span></button><p class="form-status" id="leadStatus" role="status"></p>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status"></div>
+</body>
+</html>
