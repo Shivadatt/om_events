@@ -148,8 +148,8 @@ class Command(BaseCommand):
                         "tags": si["tags"],
                         "colors": si["colors"],
                         "themes": si["themes"],
-                        "image_url": si["image_url"],
-                        "video_url": si["video_url"],
+                        "image_url": self._correct_image_url(si["image_url"]),
+                        "video_url": (si["video_url"] or "").strip(),
                         "is_featured": si["is_featured"],
                         "is_active": si["is_active"],
                         "category_id": si["category_id"]

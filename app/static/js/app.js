@@ -104,7 +104,7 @@
       return `
         <article class="product-card">
         <div class="product-image">
-          <img src="${escapeHtml((item.image_url || '').trim())}" alt="${escapeHtml(item.name)} event setup" loading="lazy" width="600" height="480" onerror="this.onerror=null;this.src='/visuals/${escapeHtml(item.slug)}.svg';">
+          <img src="${escapeHtml((item.image_url || '').trim())}" alt="${escapeHtml(item.name)} event setup" loading="lazy" width="600" height="480" onerror="this.onerror=null;this.src='/visual/${escapeHtml(item.slug)}.svg';">
           ${item.is_featured ? '<span class="product-badge">Most loved</span>' : ""}
           <button class="view-detail" data-detail="${escapeHtml(item.slug)}">View ${escapeHtml(item.name)}</button>
           <button class="quick-add" data-add="${item.id}" aria-label="Add ${escapeHtml(item.name)}">+</button>
@@ -141,7 +141,7 @@
     const discount = hasDiscount ? item.price - offerPriceVal : 0;
     const discountPercent = hasDiscount ? Math.round((discount / item.price) * 100) : 0;
 
-    $("#detailContent").innerHTML = `<div class="detail-grid"><div class="detail-image"><img src="${escapeHtml((item.image_url || '').trim())}" alt="${escapeHtml(item.name)}" onerror="this.onerror=null;this.src='/visuals/${escapeHtml(item.slug)}.svg';"></div>
+    $("#detailContent").innerHTML = `<div class="detail-grid"><div class="detail-image"><img src="${escapeHtml((item.image_url || '').trim())}" alt="${escapeHtml(item.name)}" onerror="this.onerror=null;this.src='/visual/${escapeHtml(item.slug)}.svg';"></div>
       <div class="detail-info"><p class="eyebrow">${escapeHtml(item.category)} · CUSTOMIZABLE</p><h2>${escapeHtml(item.name)}</h2><p>${escapeHtml(item.description)}</p>
       <div class="detail-price-container" style="margin-bottom: 20px;">
         ${hasDiscount ? `
