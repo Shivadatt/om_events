@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Load environment configuration
 load_dotenv(BASE_DIR / ".env")
 
-# Basic Settings
+# Basic Settings of app
 SECRET_KEY = os.getenv("SECRET_KEY", "django-development-key-change-before-production-please")
 DEBUG = os.getenv("DEBUG", "true").lower() == "true"
 ALLOWED_HOSTS = [
